@@ -148,8 +148,9 @@
   table { table-layout: fixed; }
   th:nth-child(2), th:nth-child(3), td.num { width: 27%; }
   .rownote { display: block; font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 2px; }
-  .note { font-size: 13.5px; color: var(--muted); }
-  .note li { margin-bottom: 4px; }
+  .note { font-size: 13.5px; color: var(--muted); list-style: none; padding-left: 0; }
+  .note li { margin-bottom: 4px; padding-left: 1.1em; text-indent: -1.1em; }
+  .note li::before { content: "・"; color: var(--muted); }
 
   /* ---------- CTA ---------- */
   .cta {
@@ -175,6 +176,7 @@
   .btn svg { width: 15px; height: 15px; flex: none; opacity: .8; }
   .btn:hover { opacity: .85; }
   .cta .after { font-size: 13.5px; color: var(--muted); margin-top: 18px; }
+  /* 文末が1〜2文字だけ次の行に落ちないよう、最後の一句だけ切らない */
   .cta .after span { display: inline-block; }
 
   .kanji-list { columns: 2; column-gap: 24px; padding: 0; margin: 0; list-style: none; }
@@ -271,7 +273,7 @@
     <div class="cta">
       <p class="deadline">回答締切 2026年12月31日（木）</p>
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSftnZYPLkFhbmtxED6Ksz9dtWSjLQf4QZxLt_-s8Z0oqGMbOw/viewform" target="_blank" rel="noopener"><span>参加フォームへ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
-      <p class="after">皆さんにご案内が行き渡っているか確かめたいので、<span>ご欠席の方も</span><span>お手数ですが</span><span>ご回答ください。</span></p>
+      <p class="after">皆さんにご案内が行き渡っているか、確かめたいので、ご欠席の方もお手数ですが<span>ご回答ください。</span></p>
     </div>
   </section>
 
