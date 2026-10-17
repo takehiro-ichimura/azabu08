@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>鈴木清一先生 退官記念 08同窓会</title>
 <meta name="description" content="2027年3月19日（金）ホテルオークラ東京にて開催。鈴木清一先生の退官を祝う麻布08同窓会のご案内。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="鈴木清一先生 退官記念 08同窓会">
-<meta property="og:description" content="2027年3月19日（金）18:00〜 ホテルオークラ東京">
+<meta property="og:description" content="2027年3月19日（金）18:00〜 ホテルオークラ東京 曙の間">
+<meta property="og:image" content="https://azabu08-chin.vercel.app/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://azabu08-chin.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
     --ink: #1f1d1a;
@@ -14,7 +20,7 @@
     --line: #e2ddd5;
     --paper: #faf8f4;
     --accent: #7a2e2e;
-    --accent-soft: #f3e6e6;
+    --gold: #9a8f55;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -22,7 +28,9 @@
     margin: 0;
     font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
     color: var(--ink);
-    background: var(--paper);
+    background-color: var(--paper);
+    background-image: url("asanoha.svg");
+    background-size: 104px auto;
     line-height: 1.9;
     -webkit-font-smoothing: antialiased;
   }
@@ -36,10 +44,9 @@
     border-bottom: 1px solid var(--line);
     overflow: hidden;
   }
-  /* 学校の写真を使う場合はここに。例: background: url("hero.jpg") center/cover; */
   header .photo {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, #f4efe7 0%, var(--paper) 100%);
+    background: linear-gradient(180deg, rgba(244,239,231,.92) 0%, rgba(250,248,244,.72) 100%);
     z-index: 0;
   }
   header .wrap { position: relative; z-index: 1; }
@@ -72,6 +79,7 @@
   .date-line strong { font-size: 1.25em; }
 
   /* ---------- sections ---------- */
+  main { background: rgba(250,248,244,.88); }
   section { padding: 48px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type { border-bottom: none; }
   h2 {
@@ -80,10 +88,11 @@
     letter-spacing: .35em;
     color: var(--accent);
     margin: 0 0 22px;
-    text-transform: uppercase;
   }
   h2::before { content: "— "; }
   p { margin: 0 0 1.2em; }
+
+  a { color: var(--ink); }
 
   .greeting p { font-size: 16px; }
   .greeting .sign { text-align: right; color: var(--muted); font-size: 14px; margin-top: 2em; }
@@ -93,10 +102,30 @@
   dd { margin: 0; }
   dd .sub { display: block; font-size: 14px; color: var(--muted); }
 
+  .maplink { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .maplink:hover { border-bottom-color: var(--muted); }
+  .maplink::after { content: " ↗"; font-size: .8em; color: var(--muted); }
+
+  .calendar {
+    display: inline-block;
+    margin-top: 26px;
+    font-size: 14px;
+    letter-spacing: .08em;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    transition: border-color .2s;
+  }
+  .calendar:hover { border-color: var(--muted); }
+
   table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; }
-  th, td { padding: 12px 6px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; }
+  th, td { padding: 12px 6px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: top; }
   th { color: var(--muted); font-size: 13px; letter-spacing: .1em; }
   td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rownote { display: block; font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 2px; }
   .note { font-size: 13.5px; color: var(--muted); }
   .note li { margin-bottom: 4px; }
 
@@ -126,7 +155,7 @@
   .kanji-list { columns: 2; column-gap: 24px; padding: 0; margin: 0; list-style: none; }
   .kanji-list li { break-inside: avoid; padding: 4px 0; }
 
-  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: 13px; }
+  footer { padding: 40px 0 60px; text-align: center; color: var(--muted); font-size: 13px; background: rgba(250,248,244,.88); }
   footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 
   @media (max-width: 480px) {
@@ -142,14 +171,14 @@
 <header>
   <div class="photo"></div>
   <div class="wrap">
-    <p class="eyebrow">麻布学園 2008年度卒業生</p>
+    <p class="eyebrow">麻布学園 2008年度入学生</p>
     <h1>
       <small>鈴木清一先生 退官記念</small>
       08同窓会
     </h1>
     <p class="date-line">
       2027年 <strong>3月19日</strong>（金）18:00 開宴<br>
-      <span style="font-size:15px;color:var(--muted)">ホテルオークラ東京</span>
+      <span style="font-size:15px;color:var(--muted)">ホテルオークラ東京　曙の間</span>
     </p>
   </div>
 </header>
@@ -161,7 +190,7 @@
     <p>この春、僕たちの学年主任であった鈴木清一先生が、麻布学園を退官されることになりました。</p>
     <p>「久しぶりにみんなの顔が見たい」という先生たってのご希望を受け、学年全員の同窓会をホテルオークラ東京にて開催いたします。</p>
     <p>成人式から約10年。<br>僕たちの30代の始まりと、鈴木先生のセカンドライフの門出を、皆さんで一緒に祝いましょう。</p>
-    <p>鈴木先生に会いたいという他学年の方のご参加も歓迎します。</p>
+    <p>当日は鈴木先生のほか、当時お世話になった先生方もお招きする予定です。<br>鈴木先生に会いたいという他学年の方のご参加も歓迎します。</p>
     <p class="sign">08同窓会 幹事一同</p>
   </section>
 
@@ -175,29 +204,38 @@
       </dd>
       <dt>会場</dt>
       <dd>
-        ホテルオークラ東京<br>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%AA%E3%83%BC%E3%82%AF%E3%83%A9%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener">ホテルオークラ東京　曙の間</a>
         <span class="sub">東京都港区虎ノ門2-10-4</span>
         <span class="sub">日比谷線「神谷町」駅・銀座線「虎ノ門」駅より徒歩約5〜10分</span>
       </dd>
       <dt>お料理</dt>
       <dd>
         欧風料理・中国料理・久兵衛の寿司
+        <span class="sub">フリードリンク付き（ビール・ワイン・ウイスキー・焼酎・ソフトドリンク）</span>
       </dd>
     </dl>
+    <a class="calendar" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%E9%88%B4%E6%9C%A8%E6%B8%85%E4%B8%80%E5%85%88%E7%94%9F+%E9%80%80%E5%AE%98%E8%A8%98%E5%BF%B5+08%E5%90%8C%E7%AA%93%E4%BC%9A&amp;dates=20270319T090000Z%2F20270319T110000Z&amp;location=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%AA%E3%83%BC%E3%82%AF%E3%83%A9%E6%9D%B1%E4%BA%AC+%E6%9B%99%E3%81%AE%E9%96%93%EF%BC%88%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%AF%E5%8C%BA%E8%99%8E%E3%83%8E%E9%96%802-10-4%EF%BC%89&amp;details=%E5%8F%97%E4%BB%98+17%3A00+%EF%BC%8F+%E9%96%8B%E5%AE%B4+18%3A00+%EF%BC%8F+20%3A00+%E7%B5%82%E4%BA%86%E4%BA%88%E5%AE%9A%0Ahttps%3A%2F%2Fazabu08-chin.vercel.app" target="_blank" rel="noopener">Googleカレンダーに追加</a>
   </section>
 
   <section>
     <h2>会費</h2>
     <table>
       <tr><th></th><th>事前振込</th><th>当日</th></tr>
-      <tr><td>ご本人</td><td class="num">24,000円</td><td class="num">25,000円</td></tr>
-      <tr><td>同伴者</td><td class="num">19,000円</td><td class="num">20,000円</td></tr>
+      <tr>
+        <td>ご本人<span class="rownote">08の入学生、または教員・教員OBの方</span></td>
+        <td class="num">24,000円</td><td class="num">25,000円</td>
+      </tr>
+      <tr>
+        <td>同伴者<span class="rownote">パートナーの方もぜひお誘いください</span></td>
+        <td class="num">19,000円</td><td class="num">20,000円</td>
+      </tr>
       <tr><td>中学生以下のお子様</td><td class="num">無料</td><td class="num">無料</td></tr>
     </table>
     <ul class="note">
-      <li>お花・記念品代を含みます。</li>
+      <li>お花・記念品代、フリードリンクを含みます。</li>
       <li>事前振込の締切は 2026年12月31日 です。振込先はお申し込み後の画面でご案内します。</li>
-      <li>参加人数により会費を調整する場合があります。余剰が出た場合は学園に寄付いたします。</li>
+      <li>参加人数により、当日追加の会費をいただく場合がございます。</li>
+      <li>余剰が出た場合は麻布学園に寄付いたします。</li>
     </ul>
   </section>
 
