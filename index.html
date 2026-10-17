@@ -144,6 +144,9 @@
   th, td { padding: 12px 6px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: top; }
   th { color: var(--muted); font-size: 13px; letter-spacing: .1em; }
   td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  /* 左の列が間延びしないよう、列幅を決め打ちにする */
+  table { table-layout: fixed; }
+  th:nth-child(2), th:nth-child(3), td.num { width: 27%; }
   .rownote { display: block; font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 2px; }
   .note { font-size: 13.5px; color: var(--muted); }
   .note li { margin-bottom: 4px; }
