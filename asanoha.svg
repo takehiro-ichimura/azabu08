@@ -1,19 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="69.282" height="120" viewBox="0 0 69.282 120">
-  <!-- 麻の葉文様（シンプルな伝統柄）。六角形の格子に6本の放射線。 -->
+     width="69.282" height="120.0" viewBox="0 0 69.282 120.0">
+  <!-- 麻の葉文様。正六角形を6つの正三角形に分け、各三角形の3頂点と重心を結んだ伝統柄。 -->
   <defs>
-    <g id="asanoha" fill="none" stroke="#9a8f55" stroke-width="0.8" stroke-opacity="0.3">
-      <!-- 六角形の輪郭 -->
-      <path d="M0,-40 L34.641,-20 L34.641,20 L0,40 L-34.641,20 L-34.641,-20 Z"/>
-      <!-- 中心から各頂点への放射線 -->
-      <path d="M0,-40 L0,40 M34.641,-20 L-34.641,20 M34.641,20 L-34.641,-20"/>
+    <g id="asanoha" fill="none" stroke="#9a8f55" stroke-width="0.8" stroke-opacity="0.3"
+       stroke-linecap="square">
+      <path d="M0.0,-40.0 L34.641,-20.0 M34.641,-20.0 L34.641,20.0 M34.641,20.0 L0.0,40.0 M0.0,40.0 L-34.641,20.0 M-34.641,20.0 L-34.641,-20.0 M-34.641,-20.0 L0.0,-40.0 M0.0,-40.0 L0.0,40.0 M34.641,-20.0 L-34.641,20.0 M34.641,20.0 L-34.641,-20.0 M11.547,-20.0 L0.0,0.0 M11.547,-20.0 L0.0,-40.0 M11.547,-20.0 L34.641,-20.0 M23.094,0.0 L0.0,0.0 M23.094,0.0 L34.641,-20.0 M23.094,0.0 L34.641,20.0 M11.547,20.0 L0.0,0.0 M11.547,20.0 L34.641,20.0 M11.547,20.0 L0.0,40.0 M-11.547,20.0 L0.0,0.0 M-11.547,20.0 L0.0,40.0 M-11.547,20.0 L-34.641,20.0 M-23.094,0.0 L0.0,0.0 M-23.094,0.0 L-34.641,20.0 M-23.094,0.0 L-34.641,-20.0 M-11.547,-20.0 L0.0,0.0 M-11.547,-20.0 L-34.641,-20.0 M-11.547,-20.0 L0.0,-40.0"/>
     </g>
   </defs>
-  <use xlink:href="#asanoha" href="#asanoha" x="0"      y="0"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="0" y="0"/>
   <use xlink:href="#asanoha" href="#asanoha" x="69.282" y="0"/>
-  <use xlink:href="#asanoha" href="#asanoha" x="0"      y="120"/>
-  <use xlink:href="#asanoha" href="#asanoha" x="69.282" y="120"/>
-  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="60"/>
-  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="-60"/>
-  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="180"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="0" y="120.0"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="69.282" y="120.0"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="60.0"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="-60.0"/>
+  <use xlink:href="#asanoha" href="#asanoha" x="34.641" y="180.0"/>
 </svg>
