@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      width="69.282" height="120" viewBox="0 0 69.282 120">
-  <!-- 麻の葉文様。麻布学園の校章と同じく麻の葉をかたどった伝統文様。 -->
+  <!-- 麻の葉文様（シンプルな伝統柄）。六角形の格子に6本の放射線。 -->
   <defs>
     <g id="asanoha" fill="none" stroke="#9a8f55" stroke-width="0.8" stroke-opacity="0.3">
       <!-- 六角形の輪郭 -->
       <path d="M0,-40 L34.641,-20 L34.641,20 L0,40 L-34.641,20 L-34.641,-20 Z"/>
-      <!-- 3本の対角線 -->
+      <!-- 中心から各頂点への放射線 -->
       <path d="M0,-40 L0,40 M34.641,-20 L-34.641,20 M34.641,20 L-34.641,-20"/>
-      <!-- 六芒星 -->
-      <path d="M0,-40 L34.641,20 L-34.641,20 Z M34.641,-20 L0,40 L-34.641,-20 Z"/>
     </g>
   </defs>
   <use xlink:href="#asanoha" href="#asanoha" x="0"      y="0"/>
