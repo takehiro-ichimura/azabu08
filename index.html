@@ -29,10 +29,23 @@
     font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
     color: var(--ink);
     background-color: var(--paper);
-    background-image: url("asanoha.svg");
-    background-size: 104px auto;
     line-height: 1.9;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* スクロールに合わせてゆっくり回る麻の葉の層 */
+  #asanoha-layer {
+    position: fixed;
+    inset: -60%;
+    z-index: -1;
+    background-image: url("asanoha.svg");
+    background-size: 104px auto;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #asanoha-layer { transform: none !important; }
   }
   .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
 
@@ -168,6 +181,8 @@
 </head>
 <body>
 
+<div id="asanoha-layer" aria-hidden="true"></div>
+
 <header>
   <div class="photo"></div>
   <div class="wrap">
@@ -265,6 +280,27 @@
     <a href="tel:09036849707">090-3684-9707</a>
   </p>
 </footer>
+
+<script>
+// スクロール量に合わせて麻の葉の層をゆっくり回す。
+(function () {
+  var layer = document.getElementById('asanoha-layer');
+  if (!layer) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var DEG_PER_PX = 0.02;   // 1000px スクロールで 20度
+  var ticking = false;
+
+  function update() {
+    layer.style.transform = 'rotate(' + (window.scrollY * DEG_PER_PX).toFixed(2) + 'deg)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+</script>
 
 </body>
 </html>
