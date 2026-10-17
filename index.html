@@ -106,8 +106,10 @@
 
   a { color: var(--ink); }
 
-  .greeting p { font-size: 16px; }
-  .greeting .sign { text-align: right; color: var(--muted); font-size: 14px; margin-top: 2em; }
+  .greeting p { font-size: 16px; text-align: center; }
+  /* 文節のまとまりで折り返すための箱。中央揃えの行が不自然に切れるのを防ぐ */
+  .greeting p span { display: inline-block; }
+  .greeting .sign { color: var(--muted); font-size: 14px; margin-top: 2.4em; }
 
   dl { margin: 0; display: grid; grid-template-columns: 6.5em 1fr; row-gap: 14px; column-gap: 18px; }
   dt { color: var(--muted); font-size: 14px; letter-spacing: .1em; padding-top: 2px; }
@@ -206,10 +208,10 @@
 
   <section class="greeting">
     <h2>ご挨拶</h2>
-    <p>この春、僕たちの学年主任であった鈴木清一先生が、麻布学園をご退官なされることになりました。</p>
-    <p>「久しぶりにみんなの顔が見たい」という先生たってのご希望を受け、学年全員の同窓会をホテルオークラ東京にて開催いたします。</p>
-    <p>成人式から一〇余年。<br>僕たちの三〇代の始まりと、鈴木先生のセカンドライフの門出を、皆さんで一緒に祝いましょう。</p>
-    <p>当日は鈴木先生のほか、当時お世話になった先生方もお招きする予定です。<br>鈴木先生に会いたいという他学年の方のご参加も歓迎します。</p>
+    <p><span>この春、</span><span>僕たちの学年主任であった鈴木清一先生が、</span><span>麻布学園をご退官なされることになりました。</span></p>
+    <p><span>「久しぶりにみんなの顔が見たい」という</span><span>先生たってのご希望を受け、</span><span>学年全員の同窓会を</span><span>ホテルオークラ東京にて開催いたします。</span></p>
+    <p><span>成人式から一〇余年。</span><br><span>僕たちの三〇代の始まりと、</span><span>鈴木先生のセカンドライフの門出を、</span><span>皆さんで一緒に祝いましょう。</span></p>
+    <p><span>当日は鈴木先生のほか、</span><span>当時お世話になった先生方も</span><span>お招きする予定です。</span><br><span>鈴木先生に会いたいという</span><span>他学年の方のご参加も歓迎します。</span></p>
     <p class="sign">08同窓会 幹事一同</p>
   </section>
 
@@ -239,7 +241,7 @@
   <section>
     <h2>会費</h2>
     <table>
-      <tr><th></th><th>事前振込</th><th>当日</th></tr>
+      <tr><th></th><th>事前振込</th><th>当日支払い</th></tr>
       <tr>
         <td>ご本人<span class="rownote">08の入学生、または教員・教員OBの方</span></td>
         <td class="num">24,000円</td><td class="num">25,000円</td>
