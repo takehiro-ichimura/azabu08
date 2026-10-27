@@ -200,6 +200,8 @@
   .btn-sub svg { width: 14px; height: 14px; flex: none; opacity: .8; }
   .btn-sub .bubble { width: 18px; height: 18px; opacity: 1; }
   .btn-sub:hover { background: rgba(6,199,85,.07); }
+  /* フォームとLINEのボタンは同じ幅に揃える */
+  .btn, .btn-sub { width: 100%; max-width: 280px; justify-content: center; box-sizing: border-box; padding-left: 0; padding-right: 0; }
 
   /* 名前を「／」区切りで続けて並べる。名前の途中では折り返さない */
   .kanji-list { padding: 0; margin: 0; list-style: none; line-height: 2; }
