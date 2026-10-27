@@ -182,6 +182,23 @@
   .cta .after { font-size: 13.5px; color: var(--muted); margin-top: 18px; }
   /* 文末が1〜2文字だけ次の行に落ちないよう、最後の一句だけ切らない */
   .cta .after span { display: inline-block; }
+  /* LINEグループへの導線。フォームより目立たないよう枠線だけのボタンにする */
+  .cta .line { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 26px; }
+  .cta .line p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+  .cta .line p span { display: inline-block; }
+  .btn-sub {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    text-decoration: none;
+    padding: 12px 32px;
+    font-size: 15px;
+    letter-spacing: .12em;
+    border-radius: 3px;
+    transition: background .2s;
+  }
+  .btn-sub svg { width: 14px; height: 14px; flex: none; opacity: .8; }
+  .btn-sub:hover { background: rgba(122,46,46,.06); }
 
   /* 名前を「／」区切りで続けて並べる。名前の途中では折り返さない */
   .kanji-list { padding: 0; margin: 0; list-style: none; line-height: 2; }
@@ -279,6 +296,10 @@
       <p class="deadline">回答締切 2026年12月31日（木）</p>
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSftnZYPLkFhbmtxED6Ksz9dtWSjLQf4QZxLt_-s8Z0oqGMbOw/viewform" target="_blank" rel="noopener"><span>参加フォームへ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
       <p class="after">皆さんにご案内が行き渡っているか確かめたいので、ご欠席の方もお手数ですが<span>ご回答ください。</span></p>
+      <div class="line">
+        <p>最新情報や当日の連絡は<span>LINEグループでお知らせします。</span></p>
+        <a class="btn-sub" href="https://line.me/ti/g/zWVGYDyxTa" target="_blank" rel="noopener"><span>LINEグループに参加</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
+      </div>
     </div>
   </section>
 
