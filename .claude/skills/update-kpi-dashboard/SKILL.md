@@ -50,6 +50,30 @@ GAはコネクタが無いので、内蔵ブラウザ（`mcp__Claude_Browser__*`
 
 ページは「one-writer」形式（先頭に `<meta name="dash-one-writer">`）。文言は HTML に直接書き、データで変わる数字だけ `data-draw` のドローイングで出す。数字を HTML に直書きしない。
 
+## 共有用スナップショットとPDFを作り直す（「スナップショット更新して」「PDFにして」）
+
+ダッシュボード本体は、見る人それぞれに Claude のアカウントと Google ドライブの接続が要る。誰でも見られるように、数字を埋め込んだ共有用HTMLを別のアーティファクトにしてある。
+
+共有用スナップショット: https://claude.ai/artifact/6nWYtxfXwn5qUhohaTmdre （ふつうのHTMLのアーティファクト）
+
+Dashboard 型にはPDF出力が無く、ページから印刷も呼べない。PDFは同じHTMLを手元の Chrome で印刷して作る。
+
+1. 材料をスクラッチパッドの作業フォルダにそろえる。
+   - `page.html`: `ArtifactData` `get` で `files/index.html` を `out_dir` 付きで取り、その JSON の `text` を保存する。
+   - `responses.json`: Google Drive `read_file_content`（上の fileId）で回答を読み、1回答1行の `[{"date":"YYYY-MM-DD","status":"参加","companions":0,"children":0,"payment":"事前振込"}, …]` にする。`payment` は「事前振込」「当日払い」「未定」のどれか。**名前・メール・メッセージは入れない。**
+   - `ga.json` と `ga_daily.json`: 最新のGA転記ファイル（GAも更新するなら先に上の手順で取り直す）。
+2. 組み立てる（スクリプトはこのスキルのフォルダにある）:
+   ```bash
+   python3 -I .claude/skills/update-kpi-dashboard/build_snapshot.py --page WORK/page.html --responses WORK/responses.json --ga WORK/ga.json --ga-daily WORK/ga_daily.json --label "2026年◯月◯日時点のスナップショット（フォーム回答は◯/◯、Google アナリティクスは◯/◯までの数字）" --out-dir WORK
+   ```
+   `WORK/kpi-snapshot.html`（共有用）と `WORK/export.html`（PDF用）ができる。
+3. 共有用HTML: `Artifact` で `file_path` に `WORK/kpi-snapshot.html`、`url` に上の共有用スナップショットのURLを渡して publish する（URLを変えないため。別の会話からなら先に `action: "read"` が要る）。
+4. PDF:
+   ```bash
+   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --window-size=1120,1600 --virtual-time-budget=15000 --print-to-pdf="WORK/08同窓会KPI_YYYY-MM-DD.pdf" "file://WORK/export.html"
+   ```
+   確認したいときは同じコマンドを `--screenshot="WORK/preview.png"` にして画像を見る。できたPDFは `SendUserFile` で渡す。
+
 ## 書いたあとの確認
 
 `ArtifactData` `get` で `data/users/me` の `check` を読む。`checking` なら読み直す（5回まで）。ドキュメントが無ければ問題なし。`failed` なら `page` の内容を見て直す。レンダリングやスクリーンショットでの確認はしない。
