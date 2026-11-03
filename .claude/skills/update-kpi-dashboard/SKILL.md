@@ -58,6 +58,7 @@ GAはコネクタが無いので、内蔵ブラウザ（`mcp__Claude_Browser__*`
 - **目標人数**（いま130）: `GOAL: 130,`（`window.K`）と、`summary` 計算の `to_goal: Math.max(0, 130 - …)`。
 - **費用**（いま3,000,000円）: `COST: 3000000,`（`window.K`）と、`summary` 計算の `const COST = 3000000;`。
 - **会費**: `summary` 計算の 24000 / 19000（事前振込）と 25000 / 20000（当日）。
+- **見込み（積み上がりグラフの帯と破線）**: `window.K.FORECAST`（学年人数・連絡がつく人数・同伴者の上乗せ・悲観/標準/楽観の参加割合）と、`forecast` 計算の中の `REACH` `COMP` `RATES` `KNOTS`（時期ごとの増え方）。両方そろえて直す。告知の予定が変わったら `KNOTS` の日付と割合を直す。
 - **締切・募集開始**: `DEADLINE: '2026-12-31'`、`START: '2026-11-01'`、グラフの始まり `AXIS_START: '2026-10-17'`。
 
 ページは「one-writer」形式（先頭に `<meta name="dash-one-writer">`）。文言は HTML に直接書き、データで変わる数字だけ `data-draw` のドローイングで出す。数字を HTML に直書きしない。
