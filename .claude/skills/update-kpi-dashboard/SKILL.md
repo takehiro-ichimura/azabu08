@@ -34,6 +34,9 @@ GAはコネクタが無いので、内蔵ブラウザ（`mcp__Claude_Browser__*`
    `[{"event":"page_view","count":502,"users":316}, …]` の形で JSON にする。
 3. **日別（`ga_daily`）**: 表の「イベント名」見出しの横の「+」→ 検索に「日付」→「日付」を選ぶと、イベント名×日付の表になる（ビューポートが狭いと押しにくいので `resize_window` 1400x900 にしてから。終わったら `preset: desktop` に戻す）。表の検索欄に `page_view` を入れて日別の「総ユーザー数」（users）と「イベント数」（views）を、`first_visit` を入れて日別の「総ユーザー数」（new_users）を読む。
    `[{"date":"2026-10-27","users":20,"new_users":20,"views":50}, …]` の形にする。日付は `YYYY-MM-DD`。
+   近道: 絞り込みと日付の追加はURLでもできる（`FILTER` を `page_view` や `first_visit` にして開くだけ）:
+   `https://analytics.google.com/analytics/web/#/a413622384p560984590/reports/explorer?r=top-events&params=_r.explorerCard..filterTerm%3DFILTER%26_r.explorerCard..startRow%3D0%26_r.explorerCard..seldim%3D%5B%22eventName%22,%22date%22%5D`
+   イベント別の表は1ページ10行なので、`click_` で絞り込んで `click_form_top`（ご挨拶の直後のボタン）も漏れなく取る。ファネルの「参加フォームを押した」は `click_form` と `click_form_top` のユーザー数の合計。
 4. JSON をスクラッチパッドに保存し、`Artifact` の `asset: true` でダッシュボードに upload する（`url` にダッシュボードのURL）。返ってきた `/_blob/<id>` を使う。
 5. `ArtifactData` `update` で `datasets/ga` と `datasets/ga_daily` の `source`（`{kind:"file", url, name}`）と `updated`（`{at: ISO時刻, by: "Claude（GA画面から転記）"}`）を書き換える。
 6. ファネルの説明文の期間を直す（`files/index.html` の `text` を `str_replace`）:
