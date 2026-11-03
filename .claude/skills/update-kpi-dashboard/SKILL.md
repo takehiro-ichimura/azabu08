@@ -40,7 +40,8 @@ GAはコネクタが無いので、内蔵ブラウザ（`mcp__Claude_Browser__*`
 4. JSON をスクラッチパッドに保存し、`Artifact` の `asset: true` でダッシュボードに upload する（`url` にダッシュボードのURL）。返ってきた `/_blob/<id>` を使う。
 5. `ArtifactData` `update` で `datasets/ga` と `datasets/ga_daily` の `source`（`{kind:"file", url, name}`）と `updated`（`{at: ISO時刻, by: "Claude（GA画面から転記）"}`）を書き換える。
 6. ファネルの説明文の期間を直す（`files/index.html` の `text` を `str_replace`）:
-   `Google アナリティクス 10月6日〜11月2日の記録` の日付部分。
+   `Google アナリティクス 10月7日〜11月3日の記録` の日付部分。
+7. 続けて、下の「共有用スナップショットとPDFを作り直す」で共有用スナップショットも作り直す（「ダッシュボード更新して」と言われたら、ここまでを1セットでやる）。PDFは頼まれたときだけ。
 
 ## 設定値を変える
 
@@ -57,7 +58,7 @@ GAはコネクタが無いので、内蔵ブラウザ（`mcp__Claude_Browser__*`
 
 ダッシュボード本体は、見る人それぞれに Claude のアカウントと Google ドライブの接続が要る。誰でも見られるように、数字を埋め込んだ共有用HTMLを別のアーティファクトにしてある。
 
-共有用スナップショット: https://claude.ai/artifact/6nWYtxfXwn5qUhohaTmdre （ふつうのHTMLのアーティファクト）
+共有用スナップショット: https://claude.ai/artifact/6nWYtxfXwn5qUhohaTmdre （ふつうのHTMLのアーティファクト。「リンクを知っている全員」に公開されていて、差し替えると開いている人の画面もすぐ変わる。だから名前・メール・メッセージなど個人の情報は絶対に入れない）
 
 Dashboard 型にはPDF出力が無く、ページから印刷も呼べない。PDFは同じHTMLを手元の Chrome で印刷して作る。
 
