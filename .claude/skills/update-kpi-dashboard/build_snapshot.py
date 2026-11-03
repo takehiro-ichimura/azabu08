@@ -2,7 +2,7 @@
 
 使い方:
   python3 -I build_snapshot.py --page page.html --responses responses.json \
-      --ga ga.json --ga-daily ga_daily.json --label "2026年11月3日時点…" --out-dir OUT
+      --ga ga.json --ga-daily ga_daily.json --label "2026年11月3日時点…" --as-of 2026-11-03 --out-dir OUT
 
 page.html      ダッシュボードの files/index.html の text をそのまま保存したもの
 responses.json 回答を [{date, status, companions, children, payment}, …] にしたもの（名前・メールは入れない）
@@ -25,6 +25,8 @@ D3 = '<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></
 # dash の最小限の代わり。データは埋め込み、calc はその場で計算し、draw は読み込み後にまとめて実行する。
 STUB = """<script>
 window.__DATA = %s;
+// スナップショットの日付を「今日」として扱う（後で開いても、見込みや必要ペースがその日のまま）
+(function(){ const fixed = %d; Date.now = () => fixed; })();
 (function(){
   const calcs = {}, draws = [], cbs = [];
   const D = window.__DATA;
@@ -57,6 +59,7 @@ def main():
     ap.add_argument('--ga-daily', required=True)
     ap.add_argument('--label', required=True, help='タイトル下に出す「◯月◯日時点」の一文')
     ap.add_argument('--out-dir', required=True)
+    ap.add_argument('--as-of', required=True, help='スナップショットの日付 YYYY-MM-DD（日本時間のその日の正午として扱う）')
     a = ap.parse_args()
 
     page = open(a.page, encoding='utf-8').read()
@@ -67,7 +70,9 @@ def main():
         'ga': json.load(open(a.ga, encoding='utf-8')),
         'ga_daily': json.load(open(a.ga_daily, encoding='utf-8')),
     }
-    stub = STUB % json.dumps(data, ensure_ascii=False)
+    import datetime
+    as_of = datetime.datetime.fromisoformat(a.as_of + 'T12:00:00+09:00')
+    stub = STUB % (json.dumps(data, ensure_ascii=False), int(as_of.timestamp() * 1000))
     stamp_css = '.k-head .k-stamp{font-size:12px;color:#6b6560;margin:0}'
     os.makedirs(a.out_dir, exist_ok=True)
 

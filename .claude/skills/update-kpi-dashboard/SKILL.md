@@ -77,7 +77,7 @@ Dashboard 型にはPDF出力が無く、ページから印刷も呼べない。P
    - `ga.json` と `ga_daily.json`: 最新のGA転記ファイル（GAも更新するなら先に上の手順で取り直す）。
 2. 組み立てる（スクリプトはこのスキルのフォルダにある）:
    ```bash
-   python3 -I .claude/skills/update-kpi-dashboard/build_snapshot.py --page WORK/page.html --responses WORK/responses.json --ga WORK/ga.json --ga-daily WORK/ga_daily.json --label "2026年◯月◯日時点のスナップショット（フォーム回答は◯/◯、Google アナリティクスは◯/◯までの数字）" --out-dir WORK
+   python3 -I .claude/skills/update-kpi-dashboard/build_snapshot.py --page WORK/page.html --responses WORK/responses.json --ga WORK/ga.json --ga-daily WORK/ga_daily.json --label "2026年◯月◯日時点のスナップショット（フォーム回答は◯/◯、Google アナリティクスは◯/◯までの数字）" --as-of 2026-◯◯-◯◯ --out-dir WORK
    ```
    `WORK/kpi-snapshot.html`（共有用）と `WORK/export.html`（PDF用）ができる。
 3. 共有用HTML: `Artifact` で `file_path` に `WORK/kpi-snapshot.html`、`url` に上の共有用スナップショットのURLを渡して publish する（URLを変えないため。別の会話からなら先に `action: "read"` が要る）。
