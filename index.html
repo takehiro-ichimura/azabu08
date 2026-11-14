@@ -123,6 +123,16 @@
   .greeting .sign { color: var(--muted); font-size: 14px; margin-top: 2.4em; text-align: right; }
   /* ご挨拶を読み終えたところで申し込めるよう、下のお申し込み欄と同じボタンをここにも置く */
   .cta-mini { text-align: center; margin-top: 32px; }
+  /* 日程の再調整中のお知らせ。旧日程・旧会場は取り消し線で残す */
+  .notice { border: 1px solid var(--accent); background: #fff; color: var(--accent); padding: 18px 20px; margin: 40px 0 0; text-align: center; font-size: 15px; line-height: 1.8; }
+  .notice p { margin: 0; }
+  .notice p span { display: inline-block; }
+  .notice small { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .was { text-decoration: line-through; color: var(--muted); }
+  .rescheduling { display: block; color: var(--accent); font-weight: 600; }
+  /* 受付停止中のボタン。リンクは外し、押せない見た目にする */
+  .btn.is-disabled, .calendar.is-disabled { background: #cfc8bf; color: #fff; border-color: #cfc8bf; cursor: not-allowed; pointer-events: none; }
+  .calendar.is-disabled { background: transparent; color: #b5aea6; border-color: var(--line); }
   .cta-mini p { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
   .cta-mini p span { display: inline-block; margin: 0 .4em; }
 
@@ -244,23 +254,29 @@
       08同窓会
     </h1>
     <p class="date-line">
-      2027年 <strong>3月20日</strong>（土）17:00 開宴<br>
-      <span style="font-size:15px;color:var(--muted)">ホテルニューオータニ　おり鶴 舞の間</span>
+      <span class="was">2027年 <strong>3月20日</strong>（土）17:00 開宴</span><br>
+      <span class="was" style="font-size:15px">ホテルニューオータニ　おり鶴 舞の間</span>
+      <span class="rescheduling">日程・会場を再調整中です</span>
     </p>
   </div>
 </header>
 
 <main class="wrap">
 
+  <div class="notice">
+    <p>同窓会の日程・会場を再調整しています。<br><span>決まり次第、このページと</span><span>LINEグループでお知らせします。</span></p>
+    <small>参加フォームの受付は、新しい日程が決まるまで一時停止しています。</small>
+  </div>
+
   <section class="greeting">
     <h2>ご挨拶</h2>
-    <p>この春、僕たちの代の学年主任であった鈴木清一先生が、麻布学園をご退職なされることになりました。<br>「久しぶりにみんなの顔が見たい」という先生たってのご希望を受け、学年全員の同窓会をホテルニューオータニにて開催いたします。</p>
+    <p>この春、僕たちの代の学年主任であった鈴木清一先生が、麻布学園をご退職なされることになりました。<br>「久しぶりにみんなの顔が見たい」という先生たってのご希望を受け、学年全員の同窓会を開催いたします。</p>
     <p>成人式から10余年。<br>僕たちの30代の始まりと、鈴木先生のセカンドライフの門出を、皆さんで一緒に祝いましょう。</p>
     <p>当日は、後藤先生、中野先生をはじめとする僕たちの代がお世話になった現職の先生方、教員OBの先生方、平現校長、氷上元校長先生もお誘いしています。<br>鈴木先生に会いたいという他学年の方のご参加も歓迎します。</p>
     <p class="sign">08同窓会 幹事一同</p>
     <div class="cta-mini">
-      <a class="btn" data-ga="click_form_top" href="https://docs.google.com/forms/d/e/1FAIpQLSftnZYPLkFhbmtxED6Ksz9dtWSjLQf4QZxLt_-s8Z0oqGMbOw/viewform" target="_blank" rel="noopener"><span>参加フォームへ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
-      <p><span>回答締切 2026年12月31日（木）</span><span>ご欠席・未定の方もご回答ください</span></p>
+      <span class="btn is-disabled" aria-disabled="true"><span>参加フォーム（受付停止中）</span></span>
+      <p><span>日程が決まり次第、受付を再開します</span></p>
     </div>
   </section>
 
@@ -269,15 +285,13 @@
     <dl>
       <dt>日時</dt>
       <dd>
-        2027年3月20日（土）<br>
-        受付 16:00 ／ 開宴 17:00 ／ 19:30 終了予定
+        <span class="rescheduling">再調整中</span>
+        <span class="sub was">2027年3月20日（土） 受付 16:00 ／ 開宴 17:00 ／ 19:30 終了予定</span>
       </dd>
       <dt>会場</dt>
       <dd>
-        <a class="maplink" data-ga="click_map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%AA%E3%83%BC%E3%82%BF%E3%83%8B%20%E3%82%B6%E3%83%BB%E3%83%A1%E3%82%A4%E3%83%B3&amp;query_place_id=ChIJ89uL5HyMGGAR1dzxjZ5iufQ" target="_blank" rel="noopener">ホテルニューオータニ　おり鶴 舞の間</a>
-        <span class="sub">東京都千代田区紀尾井町4-1</span>
-        <span class="sub">銀座線・丸ノ内線「赤坂見附」駅 D紀尾井町口より徒歩3分</span>
-        <span class="sub">半蔵門線・南北線「永田町」駅 7番出口より徒歩3分</span>
+        <span class="rescheduling">再調整中</span>
+        <span class="sub was">ホテルニューオータニ　おり鶴 舞の間</span>
       </dd>
       <dt>お料理</dt>
       <dd>
@@ -285,7 +299,7 @@
         <span class="sub">フリードリンク（ビール・ワイン・ウイスキー・ソフトドリンク）</span>
       </dd>
     </dl>
-    <a class="calendar" data-ga="click_calendar" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%E9%88%B4%E6%9C%A8%E6%B8%85%E4%B8%80%E5%85%88%E7%94%9F+%E3%81%94%E9%80%80%E8%81%B7%E8%A8%98%E5%BF%B5+08%E5%90%8C%E7%AA%93%E4%BC%9A&amp;dates=20270320T080000Z%2F20270320T103000Z&amp;location=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%AA%E3%83%BC%E3%82%BF%E3%83%8B+%E3%81%8A%E3%82%8A%E9%B6%B4+%E8%88%9E%E3%81%AE%E9%96%93%EF%BC%88%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E7%B4%80%E5%B0%BE%E4%BA%95%E7%94%BA4-1%EF%BC%89&amp;details=%E5%8F%97%E4%BB%98+16%3A00+%EF%BC%8F+%E9%96%8B%E5%AE%B4+17%3A00+%EF%BC%8F+19%3A30+%E7%B5%82%E4%BA%86%E4%BA%88%E5%AE%9A%0Ahttps%3A%2F%2Fazabu08-chin.vercel.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Googleカレンダーに追加</span></a>
+    <span class="calendar is-disabled" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>カレンダー追加は日程確定後に</span></span>
   </section>
 
   <section>
@@ -313,9 +327,9 @@
   <section>
     <h2>お申し込み</h2>
     <div class="cta">
-      <p class="deadline">回答締切 2026年12月31日（木）</p>
-      <a class="btn" data-ga="click_form" href="https://docs.google.com/forms/d/e/1FAIpQLSftnZYPLkFhbmtxED6Ksz9dtWSjLQf4QZxLt_-s8Z0oqGMbOw/viewform" target="_blank" rel="noopener"><span>参加フォームへ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
-      <p class="after">皆さんにご案内が行き渡っているか確かめたいので、ご欠席・未定の方もお手数ですが<span>ご回答ください。</span></p>
+      <p class="deadline">日程の再調整中のため、受付を一時停止しています</p>
+      <span class="btn is-disabled" aria-disabled="true"><span>参加フォーム（受付停止中）</span></span>
+      <p class="after">新しい日程が決まり次第、<span>受付を再開します。</span></p>
       <div class="line">
         <p>最新情報や当日の連絡は<span>LINEグループでお知らせします。</span></p>
         <a class="btn-sub" data-ga="click_line" href="https://line.me/ti/g/zWVGYDyxTa" target="_blank" rel="noopener"><svg class="bubble" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.6 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg><span>LINEグループに参加</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M19 14.5V19a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V7a1.5 1.5 0 0 1 1.5-1.5H10"/></svg></a>
